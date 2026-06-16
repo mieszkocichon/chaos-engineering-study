@@ -1,0 +1,13 @@
+{
+  "name": "network-partition",
+  "description": "L3 network partition injected at the gateway: all traffic between the gateway and {svc-01, svc-03, svc-05} is dropped by iptables (both INPUT and OUTPUT rules) from t=5s to t=75s. Unlike tc netem packet loss (L4, probabilistic), iptables DROP is deterministic (100% loss) and models a split-brain scenario where the gateway cannot reach a subset of backends while other services remain functional. Peer IPs are resolved at runtime via Docker DNS (service name → bridge IP). Overlay designed to be stacked on top of baseline-flaky, exposing superposition of L4 packet loss (affecting the same 3 leaves) and L3 reachability failure. peerServices field is non-standard — consumed by coordinator.js, resolved to IPs before being passed to infrastructure-fault-injector as options.peerIps.",
+  "faults": [
+    {
+      "targetService": "gateway",
+      "type": "network-partition",
+      "startTimeSec": 5,
+      "endTimeSec": 75,
+      "peerServices": ["svc-01", "svc-03", "svc-05"]
+    }
+  ]
+}

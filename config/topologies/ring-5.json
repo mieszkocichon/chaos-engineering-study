@@ -1,0 +1,77 @@
+{
+  "name": "ring-5",
+  "description": "Ring topology with 5 nodes (Swarm)",
+  "services": [
+    {
+      "id": "gateway",
+      "role": "entry"
+    },
+    {
+      "id": "svc-01",
+      "role": "service",
+      "port": 4001
+    },
+    {
+      "id": "svc-02",
+      "role": "service",
+      "port": 4002
+    },
+    {
+      "id": "svc-03",
+      "role": "service",
+      "port": 4003
+    },
+    {
+      "id": "svc-04",
+      "role": "service",
+      "port": 4004
+    },
+    {
+      "id": "svc-05",
+      "role": "service",
+      "port": 4005
+    }
+  ],
+  "edges": [
+    {
+      "from": "gateway",
+      "to": "svc-01"
+    },
+    {
+      "from": "svc-01",
+      "to": "svc-02"
+    },
+    {
+      "from": "gateway",
+      "to": "svc-02"
+    },
+    {
+      "from": "svc-02",
+      "to": "svc-03"
+    },
+    {
+      "from": "gateway",
+      "to": "svc-03"
+    },
+    {
+      "from": "svc-03",
+      "to": "svc-04"
+    },
+    {
+      "from": "gateway",
+      "to": "svc-04"
+    },
+    {
+      "from": "svc-04",
+      "to": "svc-05"
+    },
+    {
+      "from": "gateway",
+      "to": "svc-05"
+    },
+    {
+      "from": "svc-05",
+      "to": "svc-01"
+    }
+  ]
+}

@@ -1,0 +1,1949 @@
+{
+  "config": {
+    "topology": "ring-50",
+    "strategy": "mas-agent",
+    "faultBase": "no-wan",
+    "faultProfile": "baseline-flaky",
+    "faultPartition": "network-partition",
+    "seed": 1000,
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15,
+    "softReset": true,
+    "loadGenerator": "k6"
+  },
+  "experimentStartTime": 1776538206278,
+  "summary": {
+    "totalRequests": 665,
+    "successCount": 503,
+    "failureCount": 162,
+    "successRate": 0.7563909774436091,
+    "avgLatencyMs": 3067,
+    "p50Ms": 976,
+    "p90Ms": 12953,
+    "p99Ms": 15000,
+    "minLatencyMs": 0,
+    "maxLatencyMs": 15001,
+    "wallClockMs": 75868
+  },
+  "k6Metrics": {
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 3067.081122365414,
+        "min": 0,
+        "med": 975.815995,
+        "max": 15000.511244,
+        "p(50)": 975.815995,
+        "p(90)": 12953.3865736,
+        "p(99)": 14999.58293168
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 8,
+        "min": 2,
+        "max": 71
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 8.829550401524974,
+        "count": 665
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2251192,
+        "rate": 29890.24545490197
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.24360902255639097,
+        "passes": 162,
+        "fails": 503
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 51086,
+        "rate": 678.2953561087292
+      }
+    },
+    "http_req_blocked": {
+      "contains": "time",
+      "values": {
+        "max": 11396.224182,
+        "p(50)": 0.01003,
+        "p(90)": 1028.079144,
+        "p(99)": 11346.01819544,
+        "avg": 653.9660099954883,
+        "min": 0,
+        "med": 0.01003
+      },
+      "type": "trend"
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.2801296285714289,
+        "min": 0,
+        "med": 0.055144,
+        "max": 93.844644,
+        "p(50)": 0.055144,
+        "p(90)": 0.1231034,
+        "p(99)": 0.5002012000000012
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 1719.2137660675946,
+        "min": 73.094864,
+        "med": 775.210654,
+        "max": 14933.635399,
+        "p(50)": 775.210654,
+        "p(90)": 4528.460308600001,
+        "p(99)": 12912.498246620004
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "med": 0.136268,
+        "max": 22.196298,
+        "p(50)": 0.136268,
+        "p(90)": 0.2306786,
+        "p(99)": 1.1681785200000043,
+        "avg": 0.20545137894736842
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 0,
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0,
+        "p(50)": 0,
+        "p(90)": 0
+      }
+    },
+    "dropped_iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 814,
+        "rate": 10.8079007922426
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 120,
+        "min": 40,
+        "max": 120
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 15036.584972,
+        "p(50)": 1320.637546,
+        "p(90)": 15001.313456200001,
+        "p(99)": 15006.5586238,
+        "avg": 5188.144737975939,
+        "min": 73.286075,
+        "med": 1320.637546
+      }
+    },
+    "http_req_connecting": {
+      "contains": "time",
+      "values": {
+        "med": 0,
+        "max": 11396.043687,
+        "p(50)": 0,
+        "p(90)": 1022.6141116000001,
+        "p(99)": 11332.60432816,
+        "avg": 640.4238237398494,
+        "min": 0
+      },
+      "type": "trend"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 665,
+        "rate": 8.829550401524974
+      }
+    },
+    "http_req_waiting": {
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "med": 975.730829,
+        "max": 15000.423434,
+        "p(50)": 975.730829,
+        "p(90)": 12953.287121200001,
+        "p(99)": 14999.5140916,
+        "avg": 3066.5955413578977
+      },
+      "type": "trend"
+    },
+    "checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.7563909774436091,
+        "passes": 503,
+        "fails": 162
+      }
+    }
+  },
+  "serviceMetrics": {
+    "gateway": {
+      "errorRate": 0,
+      "avgLatency": 281,
+      "p50": 165,
+      "p90": 687,
+      "p99": 1617,
+      "requestCount": 209,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": {
+        "strategy": "mas-agent",
+        "serviceId": "gateway",
+        "currentParams": {
+          "retryCount": 0,
+          "backoffMultiplier": 4,
+          "cbThreshold": 2,
+          "cbTimeoutMs": 10000,
+          "concurrencyLimit": 5,
+          "timeoutMs": 1000
+        },
+        "decisionCount": 35,
+        "neighborCount": 50,
+        "history": [
+          {
+            "timestamp": 1776538201683,
+            "observation": {
+              "errorRate": 0,
+              "p90": 0,
+              "requestCount": 0,
+              "queueDepth": 0,
+              "neighborCount": 34,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 2,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776538204042,
+            "observation": {
+              "errorRate": 0,
+              "p90": 0,
+              "requestCount": 0,
+              "queueDepth": 0,
+              "neighborCount": 39,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 2,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776538206056,
+            "observation": {
+              "errorRate": 0,
+              "p90": 0,
+              "requestCount": 0,
+              "queueDepth": 0,
+              "neighborCount": 48,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 2,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776538208326,
+            "observation": {
+              "errorRate": 0,
+              "p90": 0,
+              "requestCount": 0,
+              "queueDepth": 1,
+              "neighborCount": 50,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 2,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776538210982,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1632,
+              "requestCount": 3,
+              "queueDepth": 5,
+              "neighborCount": 50,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 2,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776538213726,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4505,
+              "requestCount": 5,
+              "queueDepth": 6,
+              "neighborCount": 50,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 4000
+            }
+          },
+          {
+            "timestamp": 1776538216139,
+            "observation": {
+              "errorRate": 0,
+              "p90": 6789,
+              "requestCount": 9,
+              "queueDepth": 7,
+              "neighborCount": 50,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 4,
+              "backoffMultiplier": 1,
+              "cbThreshold": 6,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 57,
+              "timeoutMs": 5000
+            }
+          },
+          {
+            "timestamp": 1776538219424,
+            "observation": {
+              "errorRate": 0,
+              "p90": 6297,
+              "requestCount": 13,
+              "queueDepth": 12,
+              "neighborCount": 16,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 7,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 65,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776538222826,
+            "observation": {
+              "errorRate": 0,
+              "p90": 5619,
+              "requestCount": 25,
+              "queueDepth": 12,
+              "neighborCount": 8,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 8,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 74,
+              "timeoutMs": 4000
+            }
+          },
+          {
+            "timestamp": 1776538224924,
+            "observation": {
+              "errorRate": 0,
+              "p90": 5101,
+              "requestCount": 32,
+              "queueDepth": 8,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2.5,
+              "cbThreshold": 9,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 85,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776538227229,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4891,
+              "requestCount": 38,
+              "queueDepth": 4,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 3,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 97,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776538229521,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4293,
+              "requestCount": 43,
+              "queueDepth": 2,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 3.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 2500
+            }
+          },
+          {
+            "timestamp": 1776538231745,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3597,
+              "requestCount": 42,
+              "queueDepth": 3,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 4,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 2000
+            }
+          },
+          {
+            "timestamp": 1776538233820,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3492,
+              "requestCount": 39,
+              "queueDepth": 1,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 4,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 1500
+            }
+          },
+          {
+            "timestamp": 1776538235933,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1610,
+              "requestCount": 31,
+              "queueDepth": 4,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 4,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 1500
+            }
+          },
+          {
+            "timestamp": 1776538237933,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1977,
+              "requestCount": 28,
+              "queueDepth": 6,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 4,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 1500
+            }
+          },
+          {
+            "timestamp": 1776538239933,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1977,
+              "requestCount": 20,
+              "queueDepth": 6,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 4,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 1500
+            }
+          },
+          {
+            "timestamp": 1776538242821,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4390,
+              "requestCount": 18,
+              "queueDepth": 13,
+              "neighborCount": 6,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 4,
+              "backoffMultiplier": 4,
+              "cbThreshold": 9,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 94,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538245030,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4390,
+              "requestCount": 24,
+              "queueDepth": 7,
+              "neighborCount": 20,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 4,
+              "cbThreshold": 8,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 88,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538247623,
+            "observation": {
+              "errorRate": 0,
+              "p90": 9310,
+              "requestCount": 36,
+              "queueDepth": 4,
+              "neighborCount": 4,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 2,
+              "backoffMultiplier": 4,
+              "cbThreshold": 7,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 82,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538250833,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4807,
+              "requestCount": 49,
+              "queueDepth": 4,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 1,
+              "backoffMultiplier": 4,
+              "cbThreshold": 6,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 77,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538253257,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3112,
+              "requestCount": 43,
+              "queueDepth": 6,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 73,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538255415,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2117,
+              "requestCount": 41,
+              "queueDepth": 6,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 4,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 68,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538257434,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2103,
+              "requestCount": 44,
+              "queueDepth": 5,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 3,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 63,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538259820,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2100,
+              "requestCount": 51,
+              "queueDepth": 3,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 59,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538261934,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1991,
+              "requestCount": 55,
+              "queueDepth": 4,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 35,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538263953,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1608,
+              "requestCount": 65,
+              "queueDepth": 13,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 21,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538266015,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1311,
+              "requestCount": 77,
+              "queueDepth": 10,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 12,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538268018,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1517,
+              "requestCount": 124,
+              "queueDepth": 6,
+              "neighborCount": 0,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 7,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538270217,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1286,
+              "requestCount": 163,
+              "queueDepth": 5,
+              "neighborCount": 38,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 5,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538273124,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1195,
+              "requestCount": 182,
+              "queueDepth": 14,
+              "neighborCount": 44,
+              "openBreakers": [
+                "svc-01",
+                "svc-03",
+                "svc-05"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 5,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538275123,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1188,
+              "requestCount": 216,
+              "queueDepth": 10,
+              "neighborCount": 47,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 5,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538277124,
+            "observation": {
+              "errorRate": 0,
+              "p90": 591,
+              "requestCount": 210,
+              "queueDepth": 7,
+              "neighborCount": 47,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 5,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538279124,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1060,
+              "requestCount": 204,
+              "queueDepth": 3,
+              "neighborCount": 47,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 5,
+              "timeoutMs": 1000
+            }
+          },
+          {
+            "timestamp": 1776538281715,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1101,
+              "requestCount": 189,
+              "queueDepth": 11,
+              "neighborCount": 47,
+              "openBreakers": [
+                "svc-01",
+                "svc-02",
+                "svc-03",
+                "svc-04",
+                "svc-05",
+                "svc-06",
+                "svc-07",
+                "svc-08",
+                "svc-09",
+                "svc-10",
+                "svc-11",
+                "svc-12",
+                "svc-13",
+                "svc-14",
+                "svc-15",
+                "svc-16",
+                "svc-17",
+                "svc-18",
+                "svc-19",
+                "svc-20",
+                "svc-21",
+                "svc-22",
+                "svc-23",
+                "svc-24",
+                "svc-25",
+                "svc-26",
+                "svc-27",
+                "svc-28",
+                "svc-29",
+                "svc-30",
+                "svc-31",
+                "svc-32",
+                "svc-33",
+                "svc-35",
+                "svc-36",
+                "svc-37",
+                "svc-38",
+                "svc-39",
+                "svc-40",
+                "svc-41",
+                "svc-42",
+                "svc-43",
+                "svc-44",
+                "svc-45",
+                "svc-46",
+                "svc-47",
+                "svc-48",
+                "svc-49",
+                "svc-50"
+              ]
+            },
+            "decision": {
+              "retryCount": 0,
+              "backoffMultiplier": 4,
+              "cbThreshold": 2,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 5,
+              "timeoutMs": 1000
+            }
+          }
+        ]
+      }
+    },
+    "svc-02": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-01": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-05": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-06": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-08": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-10": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-09": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-11": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-12": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-13": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-14": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-15": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-16": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-17": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-18": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-19": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-20": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-21": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-22": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-23": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-24": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-26": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-27": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-29": {
+      "errorRate": 0,
+      "avgLatency": 37,
+      "p50": 37,
+      "p90": 37,
+      "p99": 37,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-30": {
+      "errorRate": 0,
+      "avgLatency": 57,
+      "p50": 57,
+      "p90": 57,
+      "p99": 57,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-31": {
+      "errorRate": 0,
+      "avgLatency": 48,
+      "p50": 48,
+      "p90": 48,
+      "p99": 48,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-47": {
+      "errorRate": 0,
+      "avgLatency": 41,
+      "p50": 41,
+      "p90": 41,
+      "p99": 41,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-46": {
+      "errorRate": 0,
+      "avgLatency": 59,
+      "p50": 59,
+      "p90": 59,
+      "p99": 59,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-48": {
+      "errorRate": 0,
+      "avgLatency": 47,
+      "p50": 47,
+      "p90": 47,
+      "p99": 47,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-49": {
+      "errorRate": 0,
+      "avgLatency": 46,
+      "p50": 46,
+      "p90": 46,
+      "p99": 46,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-39": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 52,
+      "p99": 52,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-40": {
+      "errorRate": 0,
+      "avgLatency": 55,
+      "p50": 55,
+      "p90": 55,
+      "p99": 55,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-28": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 49,
+      "p90": 49,
+      "p99": 49,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-32": {
+      "errorRate": 0,
+      "avgLatency": 44,
+      "p50": 44,
+      "p90": 44,
+      "p99": 44,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-45": {
+      "errorRate": 0,
+      "avgLatency": 61,
+      "p50": 61,
+      "p90": 61,
+      "p99": 61,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-44": {
+      "errorRate": 0,
+      "avgLatency": 29,
+      "p50": 29,
+      "p90": 29,
+      "p99": 29,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-36": {
+      "errorRate": 0,
+      "avgLatency": 55,
+      "p50": 55,
+      "p90": 55,
+      "p99": 55,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-41": {
+      "errorRate": 0,
+      "avgLatency": 62,
+      "p50": 62,
+      "p90": 62,
+      "p99": 62,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-34": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 50,
+      "p90": 63,
+      "p99": 179,
+      "requestCount": 153,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-43": {
+      "errorRate": 0,
+      "avgLatency": 32,
+      "p50": 32,
+      "p90": 32,
+      "p99": 32,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-42": {
+      "errorRate": 0,
+      "avgLatency": 41,
+      "p50": 41,
+      "p90": 41,
+      "p99": 41,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-37": {
+      "errorRate": 0,
+      "avgLatency": 45,
+      "p50": 45,
+      "p90": 45,
+      "p99": 45,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-35": {
+      "errorRate": 0,
+      "avgLatency": 43,
+      "p50": 43,
+      "p90": 43,
+      "p99": 43,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-04": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-50": {
+      "errorRate": 0,
+      "avgLatency": 46,
+      "p50": 46,
+      "p90": 46,
+      "p99": 46,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-25": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-33": {
+      "errorRate": 0,
+      "avgLatency": 45,
+      "p50": 45,
+      "p90": 45,
+      "p99": 45,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-07": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-38": {
+      "errorRate": 0,
+      "avgLatency": 38,
+      "p50": 38,
+      "p90": 38,
+      "p99": 38,
+      "requestCount": 1,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-03": {
+      "errorRate": 0,
+      "avgLatency": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "requestCount": 0,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    }
+  },
+  "timestamp": "2026-04-18T18:51:24.483Z"
+}

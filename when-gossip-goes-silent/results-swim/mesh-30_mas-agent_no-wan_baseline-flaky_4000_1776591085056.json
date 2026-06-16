@@ -1,0 +1,1229 @@
+{
+  "config": {
+    "topology": "mesh-30",
+    "strategy": "mas-agent",
+    "faultBase": "no-wan",
+    "faultProfile": "baseline-flaky",
+    "faultPartition": null,
+    "seed": 4000,
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15,
+    "softReset": true,
+    "loadGenerator": "k6"
+  },
+  "experimentStartTime": 1776591002650,
+  "summary": {
+    "totalRequests": 947,
+    "successCount": 846,
+    "failureCount": 101,
+    "successRate": 0.8933474128827877,
+    "avgLatencyMs": 3066,
+    "p50Ms": 1977,
+    "p90Ms": 6392,
+    "p99Ms": 15000,
+    "minLatencyMs": 0,
+    "maxLatencyMs": 15001,
+    "wallClockMs": 78262
+  },
+  "k6Metrics": {
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.10665258711721225,
+        "passes": 101,
+        "fails": 846
+      }
+    },
+    "http_req_receiving": {
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "med": 0.111633,
+        "max": 0.462783,
+        "p(50)": 0.111633,
+        "p(90)": 0.175331,
+        "p(99)": 0.2821455199999998,
+        "avg": 0.10759682576557546
+      },
+      "type": "trend"
+    },
+    "http_req_sending": {
+      "contains": "time",
+      "values": {
+        "avg": 0.0540136356916578,
+        "min": 0,
+        "med": 0.047102,
+        "max": 0.697838,
+        "p(50)": 0.047102,
+        "p(90)": 0.07897199999999999,
+        "p(99)": 0.17832325999999946
+      },
+      "type": "trend"
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 3065.8499224720194,
+        "min": 0,
+        "med": 1976.658134,
+        "max": 15000.771725,
+        "p(50)": 1976.658134,
+        "p(90)": 6392.232217799999,
+        "p(99)": 15000.076662039999
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 28,
+        "min": 17,
+        "max": 60
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 120,
+        "min": 40,
+        "max": 120
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(50)": 1976.736147,
+        "p(90)": 6392.494617799998,
+        "p(99)": 15000.17422904,
+        "avg": 3066.011532933471,
+        "min": 0,
+        "med": 1976.736147,
+        "max": 15000.826417
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(50)": 2163.655083,
+        "p(90)": 15000.468737199999,
+        "p(99)": 15001.35443726,
+        "avg": 3884.431796496308,
+        "min": 121.412185,
+        "med": 2163.655083,
+        "max": 15005.085581
+      }
+    },
+    "dropped_iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 514,
+        "rate": 6.589902960041262
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 947,
+        "rate": 12.141319266846448
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "med": 0,
+        "max": 11368.488711,
+        "p(50)": 0,
+        "p(90)": 0.2661,
+        "p(99)": 2046.1315372999995,
+        "avg": 73.4232508658923
+      }
+    },
+    "http_req_tls_handshaking": {
+      "contains": "time",
+      "values": {
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(99)": 0,
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0
+      },
+      "type": "trend"
+    },
+    "data_received": {
+      "contains": "data",
+      "values": {
+        "count": 2482416,
+        "rate": 31826.615849131886
+      },
+      "type": "counter"
+    },
+    "iterations": {
+      "contains": "default",
+      "values": {
+        "count": 947,
+        "rate": 12.141319266846448
+      },
+      "type": "counter"
+    },
+    "checks": {
+      "values": {
+        "rate": 0.8933474128827877,
+        "passes": 846,
+        "fails": 101
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 75686,
+        "rate": 970.3568004546361
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 73.44915263463572,
+        "min": 0,
+        "med": 0.00781,
+        "max": 11368.638426,
+        "p(50)": 0.00781,
+        "p(90)": 0.3771919999999999,
+        "p(99)": 2046.2784161599998
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(50)": 1970.7849245,
+        "p(90)": 4762.5564065,
+        "p(99)": 11477.289862699996,
+        "avg": 2556.7609370200903,
+        "min": 119.817298,
+        "med": 1970.7849245,
+        "max": 14515.034142
+      }
+    }
+  },
+  "serviceMetrics": {
+    "svc-02": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 50,
+      "p90": 67,
+      "p99": 101,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-04": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 66,
+      "p99": 117,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-07": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 63,
+      "p99": 101,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-06": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 62,
+      "p99": 74,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-09": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 49,
+      "p90": 61,
+      "p99": 77,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-10": {
+      "errorRate": 0,
+      "avgLatency": 48,
+      "p50": 49,
+      "p90": 60,
+      "p99": 66,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-11": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 49,
+      "p90": 61,
+      "p99": 77,
+      "requestCount": 101,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-12": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 61,
+      "p99": 70,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-19": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 50,
+      "p90": 63,
+      "p99": 72,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-22": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 49,
+      "p90": 64,
+      "p99": 80,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-21": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 63,
+      "p99": 70,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-24": {
+      "errorRate": 0,
+      "avgLatency": 56,
+      "p50": 52,
+      "p90": 71,
+      "p99": 101,
+      "requestCount": 104,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-23": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 49,
+      "p90": 64,
+      "p99": 71,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-26": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 66,
+      "p99": 99,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-25": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 67,
+      "p99": 80,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-27": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 49,
+      "p90": 62,
+      "p99": 74,
+      "requestCount": 104,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-13": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 61,
+      "p99": 107,
+      "requestCount": 102,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-14": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 51,
+      "p90": 62,
+      "p99": 69,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-15": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 69,
+      "p99": 81,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-16": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 54,
+      "p90": 65,
+      "p99": 73,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-18": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 53,
+      "p90": 63,
+      "p99": 87,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-17": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 61,
+      "p99": 83,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-28": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 49,
+      "p90": 63,
+      "p99": 100,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-30": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 64,
+      "p99": 71,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-29": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 48,
+      "p90": 61,
+      "p99": 80,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-08": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 48,
+      "p90": 65,
+      "p99": 80,
+      "requestCount": 103,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-20": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 50,
+      "p90": 64,
+      "p99": 117,
+      "requestCount": 87,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-01": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 51,
+      "p90": 64,
+      "p99": 95,
+      "requestCount": 95,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "gateway": {
+      "errorRate": 0,
+      "avgLatency": 1709,
+      "p50": 1293,
+      "p90": 2991,
+      "p99": 8104,
+      "requestCount": 111,
+      "queueDepth": 5,
+      "windowMs": 10000,
+      "strategyStats": {
+        "strategy": "mas-agent",
+        "serviceId": "gateway",
+        "currentParams": {
+          "retryCount": 5,
+          "backoffMultiplier": 2,
+          "cbThreshold": 10,
+          "cbTimeoutMs": 10000,
+          "concurrencyLimit": 100,
+          "timeoutMs": 6500
+        },
+        "decisionCount": 34,
+        "neighborCount": 30,
+        "history": [
+          {
+            "timestamp": 1776590999798,
+            "observation": {
+              "errorRate": 0,
+              "p90": 0,
+              "requestCount": 0,
+              "queueDepth": 0,
+              "neighborCount": 6,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 2,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 3000
+            }
+          },
+          {
+            "timestamp": 1776591001798,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4353,
+              "requestCount": 2,
+              "queueDepth": 0,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 3,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 5,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 50,
+              "timeoutMs": 4000
+            }
+          },
+          {
+            "timestamp": 1776591003909,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4353,
+              "requestCount": 7,
+              "queueDepth": 7,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 4,
+              "backoffMultiplier": 2,
+              "cbThreshold": 6,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 57,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776591006012,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1593,
+              "requestCount": 33,
+              "queueDepth": 12,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 7,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 65,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776591008696,
+            "observation": {
+              "errorRate": 0,
+              "p90": 1886,
+              "requestCount": 61,
+              "queueDepth": 17,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 8,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 74,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776591010708,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2117,
+              "requestCount": 77,
+              "queueDepth": 21,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 9,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 85,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776591013105,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2513,
+              "requestCount": 97,
+              "queueDepth": 25,
+              "neighborCount": 29,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 97,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776591015596,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2593,
+              "requestCount": 95,
+              "queueDepth": 31,
+              "neighborCount": 29,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 3500
+            }
+          },
+          {
+            "timestamp": 1776591018109,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3987,
+              "requestCount": 91,
+              "queueDepth": 21,
+              "neighborCount": 14,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776591020693,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4397,
+              "requestCount": 94,
+              "queueDepth": 13,
+              "neighborCount": 3,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5500
+            }
+          },
+          {
+            "timestamp": 1776591023294,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4397,
+              "requestCount": 99,
+              "queueDepth": 11,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5000
+            }
+          },
+          {
+            "timestamp": 1776591025397,
+            "observation": {
+              "errorRate": 0,
+              "p90": 4397,
+              "requestCount": 108,
+              "queueDepth": 20,
+              "neighborCount": 30,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776591028020,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2587,
+              "requestCount": 91,
+              "queueDepth": 15,
+              "neighborCount": 27,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776591030395,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2587,
+              "requestCount": 95,
+              "queueDepth": 22,
+              "neighborCount": 2,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776591032699,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2500,
+              "requestCount": 116,
+              "queueDepth": 24,
+              "neighborCount": 1,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776591034907,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2500,
+              "requestCount": 110,
+              "queueDepth": 25,
+              "neighborCount": 1,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 4500
+            }
+          },
+          {
+            "timestamp": 1776591037104,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3006,
+              "requestCount": 125,
+              "queueDepth": 14,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5500
+            }
+          },
+          {
+            "timestamp": 1776591039406,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2792,
+              "requestCount": 130,
+              "queueDepth": 20,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5500
+            }
+          },
+          {
+            "timestamp": 1776591042693,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3684,
+              "requestCount": 124,
+              "queueDepth": 17,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6500
+            }
+          },
+          {
+            "timestamp": 1776591045300,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3513,
+              "requestCount": 109,
+              "queueDepth": 21,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591048196,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3204,
+              "requestCount": 112,
+              "queueDepth": 14,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5500
+            }
+          },
+          {
+            "timestamp": 1776591050403,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3204,
+              "requestCount": 120,
+              "queueDepth": 21,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5000
+            }
+          },
+          {
+            "timestamp": 1776591052510,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2801,
+              "requestCount": 123,
+              "queueDepth": 13,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5000
+            }
+          },
+          {
+            "timestamp": 1776591054894,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2691,
+              "requestCount": 123,
+              "queueDepth": 20,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5000
+            }
+          },
+          {
+            "timestamp": 1776591058613,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2691,
+              "requestCount": 117,
+              "queueDepth": 19,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 5000
+            }
+          },
+          {
+            "timestamp": 1776591060798,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3508,
+              "requestCount": 120,
+              "queueDepth": 18,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591062912,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2909,
+              "requestCount": 124,
+              "queueDepth": 22,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591065308,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2909,
+              "requestCount": 109,
+              "queueDepth": 17,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591067600,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2792,
+              "requestCount": 132,
+              "queueDepth": 17,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591070593,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2398,
+              "requestCount": 114,
+              "queueDepth": 21,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591073698,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2900,
+              "requestCount": 111,
+              "queueDepth": 18,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6000
+            }
+          },
+          {
+            "timestamp": 1776591076300,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3693,
+              "requestCount": 99,
+              "queueDepth": 20,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 1.5,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 7000
+            }
+          },
+          {
+            "timestamp": 1776591079200,
+            "observation": {
+              "errorRate": 0,
+              "p90": 3289,
+              "requestCount": 112,
+              "queueDepth": 7,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6500
+            }
+          },
+          {
+            "timestamp": 1776591081302,
+            "observation": {
+              "errorRate": 0,
+              "p90": 2995,
+              "requestCount": 100,
+              "queueDepth": 5,
+              "neighborCount": 0,
+              "openBreakers": []
+            },
+            "decision": {
+              "retryCount": 5,
+              "backoffMultiplier": 2,
+              "cbThreshold": 10,
+              "cbTimeoutMs": 10000,
+              "concurrencyLimit": 100,
+              "timeoutMs": 6500
+            }
+          }
+        ]
+      }
+    },
+    "svc-03": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 62,
+      "p99": 76,
+      "requestCount": 90,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-05": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 50,
+      "p90": 66,
+      "p99": 71,
+      "requestCount": 66,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    }
+  },
+  "timestamp": "2026-04-19T09:31:25.055Z"
+}

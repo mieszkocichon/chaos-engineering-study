@@ -1,0 +1,1591 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chaos-experiment
+  labels:
+    experiment: chaos
+    strategy: "none"
+    fault: "baseline-flaky"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: topology
+  namespace: chaos-experiment
+data:
+  scale-20.json: |
+    {
+      "name": "scale-20",
+      "description": "20-node layered topology: 1 gateway + 4 mid-tier (svc-a/b/c/d) + 15 leaf nodes. Gossip evaluation at scale (N>=20).",
+      "defaults": {
+        "processingDelayMs": {
+          "distribution": "normal",
+          "mean": 20,
+          "std": 5
+        }
+      },
+      "services": [
+        {
+          "id": "gateway",
+          "role": "entry"
+        },
+        {
+          "id": "svc-a"
+        },
+        {
+          "id": "svc-b"
+        },
+        {
+          "id": "svc-c"
+        },
+        {
+          "id": "svc-d"
+        },
+        {
+          "id": "svc-1"
+        },
+        {
+          "id": "svc-2"
+        },
+        {
+          "id": "svc-3"
+        },
+        {
+          "id": "svc-4"
+        },
+        {
+          "id": "svc-5"
+        },
+        {
+          "id": "svc-6"
+        },
+        {
+          "id": "svc-7"
+        },
+        {
+          "id": "svc-8"
+        },
+        {
+          "id": "svc-9"
+        },
+        {
+          "id": "svc-10"
+        },
+        {
+          "id": "svc-11"
+        },
+        {
+          "id": "svc-12"
+        },
+        {
+          "id": "svc-13"
+        },
+        {
+          "id": "svc-14"
+        },
+        {
+          "id": "svc-15"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gateway",
+          "to": "svc-a"
+        },
+        {
+          "from": "gateway",
+          "to": "svc-b"
+        },
+        {
+          "from": "gateway",
+          "to": "svc-c"
+        },
+        {
+          "from": "gateway",
+          "to": "svc-d"
+        },
+        {
+          "from": "svc-a",
+          "to": "svc-1"
+        },
+        {
+          "from": "svc-b",
+          "to": "svc-2"
+        },
+        {
+          "from": "svc-c",
+          "to": "svc-3"
+        },
+        {
+          "from": "svc-d",
+          "to": "svc-4"
+        },
+        {
+          "from": "svc-a",
+          "to": "svc-5"
+        },
+        {
+          "from": "svc-b",
+          "to": "svc-6"
+        },
+        {
+          "from": "svc-c",
+          "to": "svc-7"
+        },
+        {
+          "from": "svc-d",
+          "to": "svc-8"
+        },
+        {
+          "from": "svc-a",
+          "to": "svc-9"
+        },
+        {
+          "from": "svc-b",
+          "to": "svc-10"
+        },
+        {
+          "from": "svc-c",
+          "to": "svc-11"
+        },
+        {
+          "from": "svc-d",
+          "to": "svc-12"
+        },
+        {
+          "from": "svc-a",
+          "to": "svc-13"
+        },
+        {
+          "from": "svc-b",
+          "to": "svc-14"
+        },
+        {
+          "from": "svc-c",
+          "to": "svc-15"
+        }
+      ]
+    }
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fault-profile
+  namespace: chaos-experiment
+data:
+  baseline-flaky.json: |
+    {
+      "name": "baseline-flaky",
+      "description": "Persistent 20% packet loss on svc-b via tc netem throughout the experiment. Models unstable network link.",
+      "faults": [
+        {
+          "targetService": "svc-b",
+          "type": "baseline-flaky",
+          "startTimeSec": 5,
+          "endTimeSec": 999
+        }
+      ]
+    }
+    
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: gateway
+  ports:
+    - port: 4000
+      targetPort: 4000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "gateway"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4000
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-a
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-a
+  ports:
+    - port: 4001
+      targetPort: 4001
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-a
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-a
+  template:
+    metadata:
+      labels:
+        app: svc-a
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-a"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4001
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-b
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-b
+  ports:
+    - port: 4002
+      targetPort: 4002
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-b
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-b
+  template:
+    metadata:
+      labels:
+        app: svc-b
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-b"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4002
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-c
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-c
+  ports:
+    - port: 4003
+      targetPort: 4003
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-c
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-c
+  template:
+    metadata:
+      labels:
+        app: svc-c
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-c"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4003
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-d
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-d
+  ports:
+    - port: 4004
+      targetPort: 4004
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-d
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-d
+  template:
+    metadata:
+      labels:
+        app: svc-d
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-d"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4004
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-1
+  ports:
+    - port: 4005
+      targetPort: 4005
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-1
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-1
+  template:
+    metadata:
+      labels:
+        app: svc-1
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-1"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4005
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-2
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-2
+  ports:
+    - port: 4006
+      targetPort: 4006
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-2
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-2
+  template:
+    metadata:
+      labels:
+        app: svc-2
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-2"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4006
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-3
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-3
+  ports:
+    - port: 4007
+      targetPort: 4007
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-3
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-3
+  template:
+    metadata:
+      labels:
+        app: svc-3
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-3"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4007
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-4
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-4
+  ports:
+    - port: 4008
+      targetPort: 4008
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-4
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-4
+  template:
+    metadata:
+      labels:
+        app: svc-4
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-4"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4008
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-5
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-5
+  ports:
+    - port: 4009
+      targetPort: 4009
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-5
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-5
+  template:
+    metadata:
+      labels:
+        app: svc-5
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-5"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4009
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-6
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-6
+  ports:
+    - port: 4010
+      targetPort: 4010
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-6
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-6
+  template:
+    metadata:
+      labels:
+        app: svc-6
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-6"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4010
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-7
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-7
+  ports:
+    - port: 4011
+      targetPort: 4011
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-7
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-7
+  template:
+    metadata:
+      labels:
+        app: svc-7
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-7"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4011
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-8
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-8
+  ports:
+    - port: 4012
+      targetPort: 4012
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-8
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-8
+  template:
+    metadata:
+      labels:
+        app: svc-8
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-8"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4012
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-9
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-9
+  ports:
+    - port: 4013
+      targetPort: 4013
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-9
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-9
+  template:
+    metadata:
+      labels:
+        app: svc-9
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-9"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4013
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-10
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-10
+  ports:
+    - port: 4014
+      targetPort: 4014
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-10
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-10
+  template:
+    metadata:
+      labels:
+        app: svc-10
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-10"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4014
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-11
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-11
+  ports:
+    - port: 4015
+      targetPort: 4015
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-11
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-11
+  template:
+    metadata:
+      labels:
+        app: svc-11
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-11"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4015
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-12
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-12
+  ports:
+    - port: 4016
+      targetPort: 4016
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-12
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-12
+  template:
+    metadata:
+      labels:
+        app: svc-12
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-12"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4016
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-13
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-13
+  ports:
+    - port: 4017
+      targetPort: 4017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-13
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-13
+  template:
+    metadata:
+      labels:
+        app: svc-13
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-13"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4017
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-14
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-14
+  ports:
+    - port: 4018
+      targetPort: 4018
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-14
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-14
+  template:
+    metadata:
+      labels:
+        app: svc-14
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-14"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4018
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-15
+  namespace: chaos-experiment
+spec:
+  selector:
+    app: svc-15
+  ports:
+    - port: 4019
+      targetPort: 4019
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-15
+  namespace: chaos-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-15
+  template:
+    metadata:
+      labels:
+        app: svc-15
+    spec:
+      containers:
+        - name: service
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/service-runner.js"]
+          env:
+            - name: SERVICE_ID
+              value: "svc-15"
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+          ports:
+            - containerPort: 4019
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: coordinator
+  namespace: chaos-experiment
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 120
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: coordinator
+          image: chaos-experiment:latest
+          imagePullPolicy: Never
+          command: ["node", "runner/coordinator.js"]
+          env:
+            - name: TOPOLOGY
+              value: "scale-20"
+            - name: FAULT_PROFILE
+              value: "baseline-flaky"
+            - name: STRATEGY
+              value: "none"
+            - name: SEED
+              value: "42"
+            - name: BASE_PORT
+              value: "4000"
+            - name: RPS
+              value: "50"
+            - name: DURATION_SEC
+              value: "60"
+            - name: WARMUP_SEC
+              value: "10"
+            - name: RESULTS_DIR
+              value: "/results"
+            - name: HEALTH_TIMEOUT_MS
+              value: "300000"
+          volumeMounts:
+            - name: topology-vol
+              mountPath: /app/config/topologies
+            - name: fault-vol
+              mountPath: /app/config/faults
+            - name: results-vol
+              mountPath: /results
+      volumes:
+        - name: topology-vol
+          configMap:
+            name: topology
+        - name: fault-vol
+          configMap:
+            name: fault-profile
+        - name: results-vol
+          hostPath:
+            path: /results-host
+            type: DirectoryOrCreate

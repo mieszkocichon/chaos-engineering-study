@@ -1,0 +1,7 @@
+{
+  "name": "wan-50ms",
+  "description": "Constant 50ms ±10ms egress delay applied ONLY to the gateway container's eth0 at t=1s, persisting for the entire experiment. Models a WAN hop between the application gateway and a remote data center hosting the leaf services. Leaf-to-leaf traffic (ring gossip) is unaffected, matching the design intent that intra-DC gossip remains fast. Since gateway is the only node issuing outbound routing HTTP calls to leaves, applying WAN to its egress is sufficient — HTTP RTT is dominated by the slower direction. This is a BASE layer intended to be stacked under an active overlay fault (baseline-flaky, burst-failure, slow-degradation, cascade-crash) via the FAULT_BASE coordinator env var, answering reviewer concern about external validity under realistic inter-DC latency.",
+  "faults": [
+    { "targetService": "gateway", "type": "wan-baseline", "startTimeSec": 1, "endTimeSec": 999, "options": { "delayMs": 50, "jitterMs": 10 } }
+  ]
+}

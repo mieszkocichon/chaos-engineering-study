@@ -1,0 +1,2090 @@
+{
+  "config": {
+    "topology": "ring-50",
+    "strategy": "static-conservative",
+    "faultBase": "no-wan",
+    "faultProfile": "cascade-crash",
+    "faultPartition": null,
+    "seed": 15000,
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15,
+    "softReset": true,
+    "loadGenerator": "k6"
+  },
+  "experimentStartTime": 1776511106020,
+  "summary": {
+    "totalRequests": 497,
+    "successCount": 307,
+    "failureCount": 190,
+    "successRate": 0.6177062374245473,
+    "avgLatencyMs": 3159,
+    "p50Ms": 1956,
+    "p90Ms": 9896,
+    "p99Ms": 15000,
+    "minLatencyMs": 0,
+    "maxLatencyMs": 15001,
+    "wallClockMs": 78628
+  },
+  "k6Metrics": {
+    "http_req_duration{expected_response:true}": {
+      "contains": "time",
+      "values": {
+        "p(50)": 2308.329423,
+        "p(90)": 5746.826481400001,
+        "p(99)": 12881.033868859999,
+        "avg": 3152.1668992768764,
+        "min": 418.846479,
+        "med": 2308.329423,
+        "max": 14760.677482
+      },
+      "type": "trend"
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 11283.928699920001,
+        "avg": 574.0617908551308,
+        "min": 0,
+        "med": 0,
+        "max": 11400.591894,
+        "p(50)": 0,
+        "p(90)": 1010.5333902000001
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 0,
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0,
+        "p(50)": 0,
+        "p(90)": 0
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "med": 0.127974,
+        "max": 8.231948,
+        "p(50)": 0.127974,
+        "p(90)": 0.20299400000000006,
+        "p(99)": 0.9531595600000119,
+        "avg": 0.1468951649899396
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "med": 0.046414,
+        "max": 3.053692,
+        "p(50)": 0.046414,
+        "p(90)": 0.10434000000000002,
+        "p(99)": 0.2035582800000001,
+        "avg": 0.058624911468812914
+      }
+    },
+    "data_received": {
+      "values": {
+        "count": 1435330,
+        "rate": 18403.155916577925
+      },
+      "type": "counter",
+      "contains": "data"
+    },
+    "checks": {
+      "values": {
+        "rate": 0.6177062374245473,
+        "passes": 307,
+        "fails": 190
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "http_req_duration": {
+      "contains": "time",
+      "values": {
+        "p(99)": 15000.09709972,
+        "avg": 3158.547756350098,
+        "min": 0,
+        "med": 1956.368185,
+        "max": 15000.753842,
+        "p(50)": 1956.368185,
+        "p(90)": 9895.9732958
+      },
+      "type": "trend"
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 40,
+        "max": 120,
+        "value": 120
+      }
+    },
+    "dropped_iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 963,
+        "rate": 12.347153022416128
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 497,
+        "rate": 6.3723105422023005
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.3822937625754527,
+        "passes": 190,
+        "fails": 307
+      }
+    },
+    "http_reqs": {
+      "contains": "default",
+      "values": {
+        "count": 497,
+        "rate": 6.3723105422023005
+      },
+      "type": "counter"
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 16,
+        "min": 16,
+        "max": 67
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 9895.827473800002,
+        "p(99)": 15000.045569279999,
+        "avg": 3158.3422362736424,
+        "min": 0,
+        "med": 1956.101868,
+        "max": 15000.656034,
+        "p(50)": 1956.101868
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "rate": 411.08454849917536,
+        "count": 32062
+      }
+    },
+    "iteration_duration": {
+      "values": {
+        "avg": 7717.463405915485,
+        "min": 419.702944,
+        "med": 3797.813566,
+        "max": 15024.363114,
+        "p(50)": 3797.813566,
+        "p(90)": 15001.3716834,
+        "p(99)": 15004.47525516
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 574.0970012414492,
+        "min": 0,
+        "med": 0.008661,
+        "max": 11400.667898,
+        "p(50)": 0.008661,
+        "p(90)": 1010.6929292000002,
+        "p(99)": 11284.08935348
+      }
+    }
+  },
+  "serviceMetrics": {
+    "svc-01": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 62,
+      "p99": 69,
+      "requestCount": 37,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-02": {
+      "errorRate": 0,
+      "avgLatency": 57,
+      "p50": 52,
+      "p90": 79,
+      "p99": 117,
+      "requestCount": 37,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-03": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 53,
+      "p90": 63,
+      "p99": 70,
+      "requestCount": 37,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-04": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 66,
+      "p99": 98,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-05": {
+      "errorRate": 0,
+      "avgLatency": 56,
+      "p50": 53,
+      "p90": 65,
+      "p99": 102,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-06": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 51,
+      "p90": 72,
+      "p99": 102,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-07": {
+      "errorRate": 0,
+      "avgLatency": 55,
+      "p50": 50,
+      "p90": 61,
+      "p99": 174,
+      "requestCount": 38,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-08": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 63,
+      "p99": 86,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-09": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 53,
+      "p90": 70,
+      "p99": 79,
+      "requestCount": 37,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-11": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 71,
+      "p99": 77,
+      "requestCount": 37,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-10": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 48,
+      "p90": 68,
+      "p99": 103,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-12": {
+      "errorRate": 0,
+      "avgLatency": 59,
+      "p50": 55,
+      "p90": 76,
+      "p99": 196,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-13": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 64,
+      "p99": 91,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-14": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 63,
+      "p99": 75,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-15": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 55,
+      "p90": 66,
+      "p99": 100,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-16": {
+      "errorRate": 0,
+      "avgLatency": 56,
+      "p50": 54,
+      "p90": 76,
+      "p99": 104,
+      "requestCount": 39,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-17": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 65,
+      "p99": 72,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-18": {
+      "errorRate": 0,
+      "avgLatency": 55,
+      "p50": 50,
+      "p90": 66,
+      "p99": 179,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-19": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 71,
+      "p99": 80,
+      "requestCount": 39,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-20": {
+      "errorRate": 0,
+      "avgLatency": 56,
+      "p50": 53,
+      "p90": 68,
+      "p99": 123,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-21": {
+      "errorRate": 0,
+      "avgLatency": 55,
+      "p50": 55,
+      "p90": 71,
+      "p99": 100,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-22": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 49,
+      "p90": 63,
+      "p99": 68,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-23": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 51,
+      "p90": 66,
+      "p99": 78,
+      "requestCount": 38,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-25": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 62,
+      "p99": 66,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-24": {
+      "errorRate": 0,
+      "avgLatency": 55,
+      "p50": 54,
+      "p90": 70,
+      "p99": 116,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-27": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 53,
+      "p90": 65,
+      "p99": 101,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-26": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 51,
+      "p90": 66,
+      "p99": 94,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-29": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 50,
+      "p90": 67,
+      "p99": 99,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-30": {
+      "errorRate": 0,
+      "avgLatency": 58,
+      "p50": 53,
+      "p90": 74,
+      "p99": 187,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-31": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 69,
+      "p99": 87,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-32": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 53,
+      "p90": 66,
+      "p99": 81,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-37": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 48,
+      "p90": 62,
+      "p99": 78,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-36": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 48,
+      "p90": 66,
+      "p99": 128,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-41": {
+      "errorRate": 0,
+      "avgLatency": 56,
+      "p50": 51,
+      "p90": 72,
+      "p99": 117,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-40": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 53,
+      "p90": 66,
+      "p99": 85,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-42": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 64,
+      "p99": 76,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-49": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 51,
+      "p90": 69,
+      "p99": 88,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-50": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 47,
+      "p90": 69,
+      "p99": 73,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-48": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 50,
+      "p90": 71,
+      "p99": 101,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-28": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 53,
+      "p90": 72,
+      "p99": 92,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-46": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 72,
+      "p99": 81,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-45": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 62,
+      "p99": 69,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-47": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 52,
+      "p90": 67,
+      "p99": 80,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-33": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 49,
+      "p90": 68,
+      "p99": 104,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-34": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 53,
+      "p90": 63,
+      "p99": 72,
+      "requestCount": 37,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-43": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 52,
+      "p90": 63,
+      "p99": 73,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-35": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 66,
+      "p99": 81,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-39": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 50,
+      "p90": 61,
+      "p99": 63,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-38": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 49,
+      "p90": 62,
+      "p99": 93,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-44": {
+      "errorRate": 0,
+      "avgLatency": 54,
+      "p50": 49,
+      "p90": 68,
+      "p99": 151,
+      "requestCount": 38,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "gateway": {
+      "errorRate": 0,
+      "avgLatency": 1397,
+      "p50": 699,
+      "p90": 2979,
+      "p99": 6007,
+      "requestCount": 46,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": {
+        "strategy": "static-conservative",
+        "svc-01": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120325,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-02": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120325,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-03": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-04": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-05": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-06": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-07": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-08": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-09": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-10": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-11": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 390,
+            "totalRetries": 2,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-12": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-13": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511153020,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 392,
+            "totalRetries": 4,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-14": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-15": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-16": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511120326,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-17": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183305,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 393,
+            "totalRetries": 5,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-18": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183306,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 393,
+            "totalRetries": 5,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-19": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183306,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-20": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183306,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-21": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183306,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-22": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183306,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-23": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183307,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-24": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183307,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-25": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183307,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-26": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183307,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-27": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183308,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-28": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183308,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-29": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183308,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-30": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183308,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-31": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183309,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-32": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183309,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-33": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183310,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-34": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183310,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 393,
+            "totalRetries": 5,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-35": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183311,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-36": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183311,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 392,
+            "totalRetries": 4,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-37": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183311,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 392,
+            "totalRetries": 4,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-38": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183312,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-39": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183312,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 392,
+            "totalRetries": 4,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-40": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183313,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 391,
+            "totalRetries": 3,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-41": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183313,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-42": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183398,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-43": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183398,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-44": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183399,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-45": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183399,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-46": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183399,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-47": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183399,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 394,
+            "totalRetries": 6,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-48": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183399,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 395,
+            "totalRetries": 7,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-49": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183400,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 395,
+            "totalRetries": 7,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        },
+        "svc-50": {
+          "circuitBreaker": {
+            "state": "closed",
+            "failureCount": 0,
+            "successCount": 388,
+            "lastFailureTime": 1776511183400,
+            "lastStateChange": 1776511106507,
+            "stateHistory": []
+          },
+          "retry": {
+            "totalAttempts": 395,
+            "totalRetries": 7,
+            "currentParams": {
+              "maxRetries": 1,
+              "baseDelayMs": 500,
+              "backoffMultiplier": 2
+            }
+          },
+          "concurrency": {
+            "current": 0,
+            "max": 100,
+            "totalAcquired": 388,
+            "totalRejected": 0,
+            "shedRate": 0
+          }
+        }
+      }
+    }
+  },
+  "timestamp": "2026-04-18T11:19:48.799Z"
+}
