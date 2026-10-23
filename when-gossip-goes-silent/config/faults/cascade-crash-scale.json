@@ -1,0 +1,16 @@
+{
+  "name": "cascade-crash-scale",
+  "description": "svc-c receives SIGKILL at t=20s; svc-a at t=35s (same timing as svc-03 / svc-01 in the ring profile). Variant of 'cascade-crash' for the scale-N topologies (gateway -> svc-a..d -> leaves svc-1..); the ring profile targets svc-01.. which scale-N does not have.",
+  "faults": [
+    {
+      "targetService": "svc-c",
+      "type": "cascade-crash",
+      "startTimeSec": 20
+    },
+    {
+      "targetService": "svc-a",
+      "type": "cascade-crash",
+      "startTimeSec": 35
+    }
+  ]
+}

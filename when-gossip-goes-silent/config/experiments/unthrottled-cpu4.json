@@ -1,0 +1,20 @@
+{
+  "name": "unthrottled-cpu4",
+  "description": "Unthrottled gateway evaluation with 4 CPUs",
+  "topology": "ring-50",
+  "strategies": ["none", "mas-agent", "backpressure"],
+  "faultBases": ["no-wan"],
+  "faultProfiles": ["baseline-flaky", "slow-degradation"],
+  "seeds": [1000, 2000, 3000, 4000, 5000],
+  "resources": {
+    "gatewayCpus": "4"
+  },
+  "resultsDir": "./results-rs-cpu4",
+  "projectPrefix": "urs",
+  "workers": 1,
+  "workload": {
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15
+  }
+}

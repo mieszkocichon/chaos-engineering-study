@@ -1,0 +1,51 @@
+{
+  "name": "matrix-compose",
+  "description": "Full experiment matrix: 6 strategies x 2 bases x 4 faults (48 cells) + 3 partition cells = 51 cells x 20 seeds",
+  "topology": "ring-50",
+  "strategies": [
+    "none",
+    "static",
+    "static-conservative",
+    "central",
+    "mas-agent",
+    "backpressure"
+  ],
+  "faultBases": [
+    "no-wan",
+    "wan-50ms"
+  ],
+  "faultProfiles": [
+    "baseline-flaky",
+    "burst-failure",
+    "slow-degradation",
+    "cascade-crash"
+  ],
+  "seeds": "1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000",
+  "resultsDir": "./results",
+  "workload": {
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15
+  },
+  "workers": 2,
+  "extraCells": [
+    {
+      "strategy": "central",
+      "base": "no-wan",
+      "fault": "baseline-flaky",
+      "partition": "network-partition"
+    },
+    {
+      "strategy": "mas-agent",
+      "base": "no-wan",
+      "fault": "baseline-flaky",
+      "partition": "network-partition"
+    },
+    {
+      "strategy": "backpressure",
+      "base": "no-wan",
+      "fault": "baseline-flaky",
+      "partition": "network-partition"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "slow-degradation",
+  "description": "Linear latency increase 0→5000ms over 60s on svc-01 and svc-03 (via tc netem, updated every 1s by InfrastructureFaultInjector). Models progressive WAN congestion. Pre-emptive strategies (backpressure, mas-agent) should detect the upward trend via gossip and reroute BEFORE timeout threshold; reactive strategies wait until errors accumulate.",
+  "faults": [
+    {
+      "targetService": "svc-01",
+      "type": "slow-degradation",
+      "startTimeSec": 5,
+      "endTimeSec": 75
+    },
+    {
+      "targetService": "svc-03",
+      "type": "slow-degradation",
+      "startTimeSec": 5,
+      "endTimeSec": 75
+    }
+  ]
+}

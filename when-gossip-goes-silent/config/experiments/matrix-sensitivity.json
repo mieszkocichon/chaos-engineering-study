@@ -1,0 +1,70 @@
+{
+  "name": "matrix-sensitivity",
+  "description": "StaticStrategy parameter sensitivity sweep: r4j-default, aggressive, conservative, matched",
+  "topology": "ring-50",
+  "faultBases": [
+    "no-wan"
+  ],
+  "faultProfiles": [
+    "baseline-flaky"
+  ],
+  "seeds": "1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000",
+  "resultsDir": "./results-sensitivity",
+  "projectPrefix": "sens",
+  "workload": {
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15
+  },
+  "workers": 1,
+  "variants": [
+    {
+      "name": "r4j-default",
+      "strategy": "static",
+      "staticParams": {
+        "retryCount": 3,
+        "retryBackoff": 2,
+        "cbThreshold": 5,
+        "cbTimeoutMs": 10000,
+        "requestTimeoutMs": 2000,
+        "maxConcurrent": 25
+      }
+    },
+    {
+      "name": "aggressive",
+      "strategy": "static",
+      "staticParams": {
+        "retryCount": 5,
+        "retryBackoff": 1.5,
+        "cbThreshold": 3,
+        "cbTimeoutMs": 5000,
+        "requestTimeoutMs": 3000,
+        "maxConcurrent": 80
+      }
+    },
+    {
+      "name": "conservative",
+      "strategy": "static",
+      "staticParams": {
+        "retryCount": 1,
+        "retryBackoff": 3,
+        "cbThreshold": 10,
+        "cbTimeoutMs": 20000,
+        "requestTimeoutMs": 3000,
+        "maxConcurrent": 20
+      }
+    },
+    {
+      "name": "matched",
+      "strategy": "static",
+      "staticParams": {
+        "retryCount": 3,
+        "retryBackoff": 2,
+        "cbThreshold": 5,
+        "cbTimeoutMs": 10000,
+        "requestTimeoutMs": 3000,
+        "maxConcurrent": 50
+      }
+    }
+  ]
+}

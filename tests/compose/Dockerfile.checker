@@ -1,0 +1,6 @@
+# Result checker for the cell test (T077): runs both analyzers on the coordinator's output.
+FROM python:3.12-slim-bookworm
+COPY when-gossip-goes-silent/runner/analyze_results.py /check/runner_analyze_results.py
+COPY when-gossip-goes-silent/analyze_results.py /check/analyze_results.py
+COPY tests/compose/check_cell.py /check/check_cell.py
+CMD ["python3", "-u", "/check/check_cell.py", "/results"]

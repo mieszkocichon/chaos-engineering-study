@@ -1,0 +1,47 @@
+{
+  "name": "spof-test",
+  "description": "Single-point-of-failure test (N=5): stop svc-03 at t=30s. The old script also stopped the coordinator in a second phase; that cannot produce a result (the coordinator writes it), see ADR-0030",
+  "backend": "compose",
+  "topology": "ring-5",
+  "strategies": [
+    "none",
+    "static",
+    "central",
+    "mas-agent",
+    "backpressure"
+  ],
+  "faultProfiles": [
+    "baseline-flaky"
+  ],
+  "faultBases": [
+    "no-wan"
+  ],
+  "seeds": [
+    1000
+  ],
+  "resultsDir": "./results",
+  "workload": {
+    "rps": 20,
+    "durationSec": 90,
+    "warmupSec": 15
+  },
+  "env": {
+    "SIMULATE_CLOCK_SKEW": "true",
+    "SIMULATE_IO_CONTENTION": "true"
+  },
+  "network": "bridge",
+  "actions": [
+    {
+      "atSec": 30,
+      "kind": "stop-service",
+      "target": "svc-03",
+      "metadata": {
+        "killedService": "svc-03",
+        "killAtSec": 30,
+        "permanent": true,
+        "note": "docker stop (SIGTERM) — no restart due to on-failure policy"
+      }
+    }
+  ],
+  "workers": 1
+}

@@ -1,0 +1,18 @@
+{
+  "name": "control-js",
+  "description": "Control run using JS implementation on host",
+  "impl": "js",
+  "topology": "ring-50",
+  "strategies": ["none", "mas-agent", "backpressure"],
+  "faultBases": ["no-wan"],
+  "faultProfiles": ["baseline-flaky", "slow-degradation"],
+  "seeds": [1000, 2000, 3000, 4000, 5000],
+  "resultsDir": "./results-js-local",
+  "projectPrefix": "js",
+  "workers": 1,
+  "workload": {
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15
+  }
+}

@@ -1,0 +1,21 @@
+[package]
+name = "chaos"
+edition.workspace = true
+version.workspace = true
+publish.workspace = true
+
+[dependencies]
+# lightweight: JS-compatible number formatting, fdlibm math and mulberry32 live there
+metastable = { path = "../metastable" }
+tokio.workspace = true
+axum.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+libc.workspace = true
+indexmap = "2"
+futures = "0.3"
+
+[dev-dependencies]
+sha2 = "0.10"
+tokio = { workspace = true, features = ["test-util"] }

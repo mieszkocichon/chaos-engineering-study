@@ -1,0 +1,27 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  unit-light:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container: rust:1.97.1-bookworm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            /usr/local/cargo/registry
+            target
+          key: cargo-${{ hashFiles('Cargo.lock') }}
+      - run: cargo test --workspace
+
+  ring5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: container integration (ring-5, NET_ADMIN, mixed JS+Rust)
+        run: sh tests/compose/ring5.sh
+      - name: experiment cell with real k6 + analyzer (SC-003)
+        run: sh tests/compose/cell-ring5.sh

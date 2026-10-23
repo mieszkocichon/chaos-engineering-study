@@ -1,0 +1,35 @@
+{
+  "name": "matrix-swarm",
+  "description": "Docker Swarm scaling matrix (N=20, 1 seed per deployment); fault profiles are the *-scale variants (the ring profiles target services scale-20 does not have)",
+  "backend": "swarm",
+  "scale": 20,
+  "topology": "scale-20",
+  "strategies": [
+    "none",
+    "static",
+    "central",
+    "mas-agent",
+    "backpressure"
+  ],
+  "faultProfiles": [
+    "baseline-flaky-scale",
+    "burst-failure-scale",
+    "slow-degradation-scale",
+    "cascade-crash-scale"
+  ],
+  "seeds": [
+    1000,
+    2000,
+    3000,
+    4000,
+    5000
+  ],
+  "resultsDir": "./results",
+  "workload": {
+    "rps": 50,
+    "durationSec": 60,
+    "warmupSec": 10
+  },
+  "healthTimeoutMs": 540000,
+  "workers": 1
+}

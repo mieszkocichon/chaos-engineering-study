@@ -1,0 +1,33 @@
+{
+  "name": "matrix-spof",
+  "description": "Central Controller SPOF evaluation vs decentralized MAS-ODA",
+  "topology": "ring-50",
+  "faultBases": ["no-wan"],
+  "faultProfiles": ["baseline-flaky"],
+  "seeds": "1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000",
+  "resultsDir": "./results-spof",
+  "projectPrefix": "spof",
+  "workload": {
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15
+  },
+  "workers": 1,
+  "variants": [
+    {
+      "name": "central-baseline",
+      "strategy": "central",
+      "spofKillAtSec": 0
+    },
+    {
+      "name": "central-spof30",
+      "strategy": "central",
+      "spofKillAtSec": 30
+    },
+    {
+      "name": "mas-agent-ref",
+      "strategy": "mas-agent",
+      "spofKillAtSec": 0
+    }
+  ]
+}

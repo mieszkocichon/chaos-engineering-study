@@ -1,0 +1,1222 @@
+{
+  "config": {
+    "topology": "ring-50",
+    "strategy": "backpressure",
+    "faultBase": "no-wan",
+    "faultProfile": "baseline-flaky",
+    "faultPartition": null,
+    "seed": 26000,
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15,
+    "softReset": true,
+    "loadGenerator": "k6",
+    "spof": null
+  },
+  "experimentStartTime": 1792493382604,
+  "summary": {
+    "totalRequests": 1345,
+    "successCount": 1345,
+    "failureCount": 0,
+    "successRate": 1,
+    "avgLatencyMs": 937,
+    "p50Ms": 345,
+    "p90Ms": 2923,
+    "p99Ms": 7759,
+    "minLatencyMs": 93,
+    "maxLatencyMs": 10158,
+    "wallClockMs": 76994
+  },
+  "k6Metrics": {
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 6442141,
+        "rate": 83960.53727715151
+      }
+    },
+    "checks": {
+      "values": {
+        "rate": 1,
+        "passes": 1345,
+        "fails": 0
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "fails": 1345,
+        "rate": 0,
+        "passes": 0
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "max": 100,
+        "value": 100,
+        "min": 40
+      }
+    },
+    "http_req_receiving": {
+      "contains": "time",
+      "values": {
+        "max": 1.299416,
+        "p(50)": 0.140786,
+        "p(90)": 0.2029738,
+        "p(99)": 0.4429310799999998,
+        "avg": 0.15226406245353166,
+        "min": 0.01731,
+        "med": 0.140786
+      },
+      "type": "trend"
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 112422,
+        "rate": 1465.19790885855
+      }
+    },
+    "http_req_waiting": {
+      "values": {
+        "p(90)": 2922.4535410000253,
+        "p(99)": 7759.077144519994,
+        "avg": 937.2621297390332,
+        "min": 93.019027,
+        "med": 345.01631,
+        "max": 10157.850887,
+        "p(50)": 345.01631
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(50)": 345.254471,
+        "p(90)": 2922.686089400025,
+        "p(99)": 7759.248817279995,
+        "avg": 937.4691398713755,
+        "min": 93.199313,
+        "med": 345.254471,
+        "max": 10158.033794
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 4,
+        "min": 2,
+        "max": 66
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 937.8917317680291,
+        "min": 93.496694,
+        "med": 345.613552,
+        "max": 10160.572631,
+        "p(50)": 345.613552,
+        "p(90)": 2922.959734600025,
+        "p(99)": 7759.872719919995
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 1345,
+        "rate": 17.529408722623238
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.00775,
+        "max": 26.628806,
+        "p(50)": 0.00775,
+        "p(90)": 0.015182400000000016,
+        "p(99)": 0.44938923999999975,
+        "avg": 0.051133044609665404,
+        "min": 0.00422
+      }
+    },
+    "http_req_sending": {
+      "contains": "time",
+      "values": {
+        "p(99)": 0.16537079999999982,
+        "avg": 0.05474606988847589,
+        "min": 0.015481,
+        "med": 0.048472,
+        "max": 0.55801,
+        "p(50)": 0.048472,
+        "p(90)": 0.07174700000000003
+      },
+      "type": "trend"
+    },
+    "http_req_connecting": {
+      "contains": "time",
+      "values": {
+        "avg": 0.03523810855018586,
+        "min": 0,
+        "med": 0,
+        "max": 26.541553,
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(99)": 0.3178949999999995
+      },
+      "type": "trend"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 937.4691398713755,
+        "min": 93.199313,
+        "med": 345.254471,
+        "max": 10158.033794,
+        "p(50)": 345.254471,
+        "p(90)": 2922.686089400025,
+        "p(99)": 7759.248817279995
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 0,
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0,
+        "p(50)": 0,
+        "p(90)": 0
+      }
+    },
+    "dropped_iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 130,
+        "rate": 1.6942922928929522
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 1345,
+        "rate": 17.529408722623238
+      }
+    }
+  },
+  "serviceMetrics": {
+    "gateway": {
+      "errorRate": 0,
+      "avgLatency": 655,
+      "p50": 355,
+      "p90": 1702,
+      "p99": 3047,
+      "requestCount": 165,
+      "queueDepth": 26,
+      "windowMs": 10000,
+      "strategyStats": {
+        "strategy": "backpressure",
+        "serviceId": "gateway",
+        "throttledCount": 6237,
+        "throttledByGossip": 0,
+        "throttledByLocalFails": 6237,
+        "passedCount": 62213,
+        "throttleRate": 0.0911,
+        "gossipReceived": 3442,
+        "neighborStates": {
+          "svc-11": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 1,
+            "ageMs": 7
+          },
+          "svc-43": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 1,
+            "ageMs": 6
+          },
+          "svc-47": {
+            "errorRate": 0,
+            "avgLatency": 50,
+            "load": 2,
+            "ageMs": 995
+          },
+          "svc-22": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 986
+          },
+          "svc-45": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 2,
+            "ageMs": 982
+          },
+          "svc-35": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 1,
+            "ageMs": 945
+          },
+          "svc-34": {
+            "errorRate": 0,
+            "avgLatency": 50,
+            "load": 1,
+            "ageMs": 939
+          },
+          "svc-07": {
+            "errorRate": 0,
+            "avgLatency": 50,
+            "load": 0,
+            "ageMs": 939
+          },
+          "svc-09": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 924
+          },
+          "svc-17": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 1,
+            "ageMs": 826
+          },
+          "svc-05": {
+            "errorRate": 0,
+            "avgLatency": 53,
+            "load": 3,
+            "ageMs": 74
+          },
+          "svc-38": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 1,
+            "ageMs": 826
+          },
+          "svc-33": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 2,
+            "ageMs": 836
+          },
+          "svc-16": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 796
+          },
+          "svc-46": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 792
+          },
+          "svc-30": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 780
+          },
+          "svc-25": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 1,
+            "ageMs": 759
+          },
+          "svc-12": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 749
+          },
+          "svc-31": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 638
+          },
+          "svc-01": {
+            "errorRate": 0,
+            "avgLatency": 53,
+            "load": 0,
+            "ageMs": 700
+          },
+          "svc-32": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 700
+          },
+          "svc-41": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 1,
+            "ageMs": 663
+          },
+          "svc-20": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 649
+          },
+          "svc-48": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 2,
+            "ageMs": 622
+          },
+          "svc-28": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 551
+          },
+          "svc-10": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 542
+          },
+          "svc-13": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 529
+          },
+          "svc-02": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 2,
+            "ageMs": 503
+          },
+          "svc-18": {
+            "errorRate": 0,
+            "avgLatency": 53,
+            "load": 0,
+            "ageMs": 454
+          },
+          "svc-14": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 252
+          },
+          "svc-04": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 436
+          },
+          "svc-50": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 6,
+            "ageMs": 428
+          },
+          "svc-27": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 426
+          },
+          "svc-03": {
+            "errorRate": 0,
+            "avgLatency": 50,
+            "load": 0,
+            "ageMs": 420
+          },
+          "svc-39": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 418
+          },
+          "svc-24": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 389
+          },
+          "svc-21": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 331
+          },
+          "svc-29": {
+            "errorRate": 0,
+            "avgLatency": 49,
+            "load": 0,
+            "ageMs": 289
+          },
+          "svc-42": {
+            "errorRate": 0,
+            "avgLatency": 49,
+            "load": 0,
+            "ageMs": 273
+          },
+          "svc-06": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 181
+          },
+          "svc-19": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 1,
+            "ageMs": 164
+          },
+          "svc-49": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 3,
+            "ageMs": 157
+          },
+          "svc-23": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 154
+          },
+          "svc-44": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 70
+          },
+          "svc-40": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 2,
+            "ageMs": 144
+          },
+          "svc-08": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 0,
+            "ageMs": 72
+          },
+          "svc-36": {
+            "errorRate": 0,
+            "avgLatency": 49,
+            "load": 2,
+            "ageMs": 65
+          },
+          "svc-37": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 38
+          },
+          "svc-15": {
+            "errorRate": 0,
+            "avgLatency": 52,
+            "load": 0,
+            "ageMs": 37
+          },
+          "svc-26": {
+            "errorRate": 0,
+            "avgLatency": 51,
+            "load": 1,
+            "ageMs": 23
+          }
+        },
+        "recentThrottles": [
+          {
+            "ts": 1792493413321,
+            "downstreamId": "svc-05",
+            "reason": "localFailures=31>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413321,
+            "downstreamId": "svc-08",
+            "reason": "localFailures=23>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413322,
+            "downstreamId": "svc-50",
+            "reason": "localFailures=25>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413376,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413376,
+            "downstreamId": "svc-03",
+            "reason": "localFailures=24>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413376,
+            "downstreamId": "svc-04",
+            "reason": "localFailures=31>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413376,
+            "downstreamId": "svc-08",
+            "reason": "localFailures=23>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413377,
+            "downstreamId": "svc-50",
+            "reason": "localFailures=25>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413420,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413420,
+            "downstreamId": "svc-03",
+            "reason": "localFailures=24>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413420,
+            "downstreamId": "svc-04",
+            "reason": "localFailures=31>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413420,
+            "downstreamId": "svc-08",
+            "reason": "localFailures=23>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413420,
+            "downstreamId": "svc-50",
+            "reason": "localFailures=25>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413480,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413480,
+            "downstreamId": "svc-03",
+            "reason": "localFailures=24>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413522,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413522,
+            "downstreamId": "svc-03",
+            "reason": "localFailures=24>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413570,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413643,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          },
+          {
+            "ts": 1792493413661,
+            "downstreamId": "svc-02",
+            "reason": "localFailures=26>=3",
+            "source": "local"
+          }
+        ]
+      }
+    },
+    "svc-01": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 53,
+      "p90": 63,
+      "p99": 78,
+      "requestCount": 115,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-02": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 64,
+      "p99": 74,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-03": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 49,
+      "p90": 63,
+      "p99": 74,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-04": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 65,
+      "p99": 72,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-05": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 65,
+      "p99": 79,
+      "requestCount": 155,
+      "queueDepth": 3,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-06": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 64,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-07": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 49,
+      "p90": 63,
+      "p99": 76,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-08": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 67,
+      "p99": 77,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-09": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 53,
+      "p90": 63,
+      "p99": 78,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-10": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 65,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-11": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 64,
+      "p99": 70,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-12": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 64,
+      "p99": 70,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-13": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 62,
+      "p99": 76,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-14": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 53,
+      "p90": 64,
+      "p99": 75,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-15": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 64,
+      "p99": 76,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-16": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 65,
+      "p99": 73,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-17": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 62,
+      "p99": 75,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-18": {
+      "errorRate": 0,
+      "avgLatency": 53,
+      "p50": 52,
+      "p90": 67,
+      "p99": 85,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-19": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 50,
+      "p90": 63,
+      "p99": 84,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-20": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 65,
+      "p99": 77,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-21": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 64,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-22": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 65,
+      "p99": 74,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-23": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 66,
+      "p99": 77,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-24": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 63,
+      "p99": 73,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-25": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 64,
+      "p99": 82,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-26": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 63,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-27": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 50,
+      "p90": 64,
+      "p99": 75,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-28": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 65,
+      "p99": 74,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-29": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 48,
+      "p90": 62,
+      "p99": 70,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-30": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 65,
+      "p99": 76,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-31": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 64,
+      "p99": 75,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-32": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 65,
+      "p99": 81,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-33": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 62,
+      "p99": 77,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-34": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 63,
+      "p99": 72,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-35": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 52,
+      "p90": 66,
+      "p99": 78,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-36": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 50,
+      "p90": 63,
+      "p99": 73,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-37": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 51,
+      "p90": 65,
+      "p99": 72,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-38": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 53,
+      "p90": 63,
+      "p99": 72,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-39": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 62,
+      "p99": 76,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-40": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 63,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-41": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 64,
+      "p99": 74,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-42": {
+      "errorRate": 0,
+      "avgLatency": 49,
+      "p50": 49,
+      "p90": 62,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-43": {
+      "errorRate": 0,
+      "avgLatency": 52,
+      "p50": 53,
+      "p90": 66,
+      "p99": 98,
+      "requestCount": 155,
+      "queueDepth": 1,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-44": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 63,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-45": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 61,
+      "p99": 73,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-46": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 52,
+      "p90": 65,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 0,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-47": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 50,
+      "p90": 62,
+      "p99": 69,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-48": {
+      "errorRate": 0,
+      "avgLatency": 50,
+      "p50": 51,
+      "p90": 63,
+      "p99": 74,
+      "requestCount": 155,
+      "queueDepth": 2,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-49": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 65,
+      "p99": 71,
+      "requestCount": 155,
+      "queueDepth": 3,
+      "windowMs": 10000,
+      "strategyStats": null
+    },
+    "svc-50": {
+      "errorRate": 0,
+      "avgLatency": 51,
+      "p50": 51,
+      "p90": 62,
+      "p99": 72,
+      "requestCount": 155,
+      "queueDepth": 6,
+      "windowMs": 10000,
+      "strategyStats": null
+    }
+  },
+  "timestamp": "2026-10-20T10:51:01.639Z"
+}

@@ -1,6 +1,6 @@
 # ADR-0004: Run all builds and simulations via Docker, no host toolchains
 
-- **Status:** Accepted
+- **Status:** Accepted; superseded in part by ADR-0024/ADR-0026 (the Node images are no longer the toolchain: `rust:1.97.1-bookworm` / `rust-dev` are; Node remains only for the archived reference and golden vectors)
 - **Date:** 2026-06-28
 
 ## Context / Background

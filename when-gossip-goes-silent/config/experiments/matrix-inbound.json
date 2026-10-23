@@ -1,0 +1,17 @@
+{
+  "name": "matrix-inbound",
+  "description": "Inbound error reporting PoC: mas-agent vs mas-agent-inbound on ring-50 baseline-flaky",
+  "topology": "ring-50",
+  "strategies": ["mas-agent", "mas-agent-inbound"],
+  "faultBases": ["no-wan"],
+  "faultProfiles": ["baseline-flaky"],
+  "seeds": "1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000",
+  "resultsDir": "./results-inbound",
+  "projectPrefix": "inbound",
+  "workload": {
+    "rps": 20,
+    "durationSec": 60,
+    "warmupSec": 15
+  },
+  "workers": 1
+}

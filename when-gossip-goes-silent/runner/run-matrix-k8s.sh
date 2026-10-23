@@ -6,9 +6,11 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SCRIPT_DIR/.."
+# IMPL=js|rust selects the implementation (see runner/impl.sh)
+source "$SCRIPT_DIR/impl.sh"
 
 SCALE=20
-IMAGE="chaos-experiment:latest"
+IMAGE="$EXP_IMAGE"
 CLUSTER_NAME="chaos-experiment"
 NAMESPACE="chaos-experiment"
 RESULTS_DIR="$(pwd)/results"
@@ -26,7 +28,7 @@ for cmd in docker k3d kubectl; do
     command -v "$cmd" &>/dev/null || missing+=("$cmd")
 done
 
-if [[ ${
+if [[ ${#missing[@]} -gt 0 ]]; then
     echo "[ERROR] Brakujące narzędzia: ${missing[*]}"
     echo "  Instalacja: nix profile install nixpkgs#k3d nixpkgs#kubectl"
     exit 1
@@ -50,7 +52,7 @@ echo ""
 
 
 echo "[1/4] Budowanie obrazu Docker..."
-docker build -t "$IMAGE" . --quiet
+build_experiment_image --quiet > /dev/null
 echo "      Obraz: $IMAGE"
 
 
@@ -78,7 +80,7 @@ k3d image import "$IMAGE" --cluster "$CLUSTER_NAME"
 echo "      Obraz załadowany."
 
 
-TOTAL=$(( ${
+TOTAL=$(( ${#STRATEGIES[@]} * ${#FAULTS[@]} ))
 CURRENT=0
 
 echo ""
@@ -92,10 +94,7 @@ for strategy in "${STRATEGIES[@]}"; do
 
 
         echo "    Generowanie manifestów..."
-        docker run --rm \
-            -v "$(pwd):/app" \
-            "$IMAGE" \
-            node generate-k8s-manifests.js "$SCALE" "$fault" "$strategy"
+        gen k8s "$SCALE" "$fault" "$strategy"
 
         MANIFEST="${K8S_DIR}/manifests-${fault}-${strategy}.yaml"
 

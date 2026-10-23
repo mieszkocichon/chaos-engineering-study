@@ -1,0 +1,81 @@
+# Container integration test (T060/T061): ring-5 with real tc/iptables (NET_ADMIN).
+#   docker compose -f tests/compose/ring5.yml up --build --abort-on-container-exit --exit-code-from tester
+# MODE=rust (default) | mixed-a (Rust gateway, JS svc-02/svc-04) | mixed-b (JS gateway, Rust leaves)
+name: ring5
+
+x-svc: &svc
+  cap_add: [NET_ADMIN]
+  restart: "no"
+  healthcheck:
+    test: ["CMD", "curl", "-fsS", "http://localhost:4000/health"]
+    interval: 1s
+    timeout: 2s
+    retries: 60
+
+x-env: &env
+  TOPOLOGY: ring-5
+  FAULT_PROFILE: no-wan
+  SEED: "1000"
+  BASE_PORT: "4000"
+
+services:
+  gateway:
+    <<: *svc
+    image: ${GATEWAY_IMAGE:-chaos-experiment-rs:test}
+    container_name: ring5-gateway
+    environment: { <<: *env, SERVICE_ID: gateway, STRATEGY: "${GATEWAY_STRATEGY:-static}" }
+    healthcheck: { test: ["CMD", "curl", "-fsS", "http://localhost:4000/health"], interval: 1s, timeout: 2s, retries: 60 }
+  svc-01:
+    <<: *svc
+    image: chaos-experiment-rs:test
+    container_name: ring5-svc-01
+    environment: { <<: *env, SERVICE_ID: svc-01 }
+    healthcheck: { test: ["CMD", "curl", "-fsS", "http://localhost:4001/health"], interval: 1s, timeout: 2s, retries: 60 }
+  svc-02:
+    <<: *svc
+    image: ${LEAF_JS_IMAGE:-chaos-experiment-rs:test}
+    container_name: ring5-svc-02
+    environment: { <<: *env, SERVICE_ID: svc-02 }
+    healthcheck: { test: ["CMD", "curl", "-fsS", "http://localhost:4002/health"], interval: 1s, timeout: 2s, retries: 60 }
+  svc-03:
+    <<: *svc
+    image: chaos-experiment-rs:test
+    container_name: ring5-svc-03
+    environment: { <<: *env, SERVICE_ID: svc-03 }
+    healthcheck: { test: ["CMD", "curl", "-fsS", "http://localhost:4003/health"], interval: 1s, timeout: 2s, retries: 60 }
+  svc-04:
+    <<: *svc
+    image: ${LEAF_JS_IMAGE:-chaos-experiment-rs:test}
+    container_name: ring5-svc-04
+    environment: { <<: *env, SERVICE_ID: svc-04 }
+    healthcheck: { test: ["CMD", "curl", "-fsS", "http://localhost:4004/health"], interval: 1s, timeout: 2s, retries: 60 }
+  svc-05:
+    <<: *svc
+    image: chaos-experiment-rs:test
+    container_name: ring5-svc-05
+    environment: { <<: *env, SERVICE_ID: svc-05 }
+    healthcheck: { test: ["CMD", "curl", "-fsS", "http://localhost:4005/health"], interval: 1s, timeout: 2s, retries: 60 }
+
+  # build-only helpers: images referenced above
+  build-rs:
+    image: chaos-experiment-rs:test
+    build: { context: ../.., dockerfile: Dockerfile }
+    profiles: [build]
+  build-js:
+    image: chaos-experiment:test
+    build: { context: ../../old-implementation/when-gossip-goes-silent }
+    profiles: [build]
+
+  tester:
+    build: { context: ../.., dockerfile: tests/compose/Dockerfile.tester }
+    environment:
+      MODE: ${MODE:-rust}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      gateway: { condition: service_healthy }
+      svc-01: { condition: service_healthy }
+      svc-02: { condition: service_healthy }
+      svc-03: { condition: service_healthy }
+      svc-04: { condition: service_healthy }
+      svc-05: { condition: service_healthy }

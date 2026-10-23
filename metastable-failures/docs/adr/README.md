@@ -29,5 +29,12 @@ Format: lightweight MADR. Status, Context, Decision, Consequences, Alternatives,
 | [0021](0021-repository-layout.md) | Self-contained `metastable-failures/` repository layout | Accepted |
 | [0022](0022-venue-selection.md) | Venue selection — DSN / SRDS first, TDSC alternative | Accepted |
 | [0023](0023-statistical-rigor-standard.md) | Carry over the statistical-rigor standard (n≥30, MWU + Cliff's δ) | Accepted |
+| [0024](0024-rewrite-to-rust.md) | Rewrite the platform in Rust | Accepted |
+| [0025](0025-float-math-parity.md) | Float math parity: port V8 fdlibm log, cos, sqrt | Accepted |
+| [0026](0026-accept-rust-equivalence-archive-js.md) | Accept Rust equivalence and archive JS in old-implementation/ | Accepted |
+| [0027](0027-resilience-strategy-trait-plugin.md) | Resilience strategies as open plugins (Open/Closed principle) | Accepted |
+| [0028](0028-fault-kind-trait-plugin.md) | Infrastructure fault profiles as open plugins (Open/Closed principle) | Accepted |
+| [0029](0029-chaos-run-experiment-cli.md) | Unified declarative experiment runner CLI (chaos-run) | Accepted |
+| [0030](0030-swarm-backend-and-mid-run-actions.md) | Docker Swarm backend and mid-run actions in chaos-run | Accepted |
 
 Numbering is chronological by the order decisions were taken on 2026-06-28.

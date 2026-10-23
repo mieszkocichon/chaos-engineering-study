@@ -1,0 +1,24 @@
+{
+  "name": "baseline-flaky-scale",
+  "description": "Persistent 40% packet loss on 3 of the 4 mid-tier services (svc-a, svc-b, svc-c) via tc netem throughout the experiment. Variant of 'baseline-flaky' for the scale-N topologies (gateway -> svc-a..d -> leaves svc-1..); the ring profile targets svc-01.. which scale-N does not have.",
+  "faults": [
+    {
+      "targetService": "svc-a",
+      "type": "baseline-flaky",
+      "startTimeSec": 5,
+      "endTimeSec": 999
+    },
+    {
+      "targetService": "svc-b",
+      "type": "baseline-flaky",
+      "startTimeSec": 5,
+      "endTimeSec": 999
+    },
+    {
+      "targetService": "svc-c",
+      "type": "baseline-flaky",
+      "startTimeSec": 5,
+      "endTimeSec": 999
+    }
+  ]
+}

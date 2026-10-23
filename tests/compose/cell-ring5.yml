@@ -1,0 +1,47 @@
+# Cell test (T077): ring-5 Rust services + chaos-coord driving real k6 for one short seed,
+# then check_cell.py validates the result file and runs analyze_results.py on it.
+#   sh tests/compose/cell-ring5.sh
+name: cell5
+
+x-svc: &svc
+  image: chaos-experiment-rs:test
+  cap_add: [NET_ADMIN, NET_RAW]
+  restart: "no"
+
+x-env: &env
+  TOPOLOGY: ring-5
+  FAULT_PROFILE: baseline-flaky
+  STRATEGY: mas-agent
+  SEED: "1000"
+  BASE_PORT: "4000"
+
+services:
+  gateway: { <<: *svc, environment: { <<: *env, SERVICE_ID: gateway } }
+  svc-01: { <<: *svc, environment: { <<: *env, SERVICE_ID: svc-01 } }
+  svc-02: { <<: *svc, environment: { <<: *env, SERVICE_ID: svc-02 } }
+  svc-03: { <<: *svc, environment: { <<: *env, SERVICE_ID: svc-03 } }
+  svc-04: { <<: *svc, environment: { <<: *env, SERVICE_ID: svc-04 } }
+  svc-05: { <<: *svc, environment: { <<: *env, SERVICE_ID: svc-05 } }
+  coordinator:
+    <<: *svc
+    command: ["chaos-coord"]
+    environment:
+      <<: *env
+      FAULT_BASE: no-wan
+      FAULT_PARTITION: ""
+      SEEDS: "1000"
+      RPS: "20"
+      DURATION_SEC: "20"
+      WARMUP_SEC: "5"
+      RESULTS_DIR: /results
+      HEALTH_TIMEOUT_MS: "60000"
+    volumes: [results:/results]
+    depends_on: [gateway, svc-01, svc-02, svc-03, svc-04, svc-05]
+  checker:
+    build: { context: ../.., dockerfile: tests/compose/Dockerfile.checker }
+    volumes: [results:/results]
+    depends_on:
+      coordinator: { condition: service_completed_successfully }
+
+volumes:
+  results:

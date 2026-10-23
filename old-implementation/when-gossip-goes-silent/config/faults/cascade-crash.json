@@ -1,0 +1,16 @@
+{
+  "name": "cascade-crash",
+  "description": "svc-03 receives SIGKILL at t=20s; svc-01 receives SIGKILL at t=35s. Docker restarts each container (restart_policy: on-failure). Models cascading crash scenario: first failure triggers spike in load on remaining nodes, second failure arrives before full recovery. Tests whether adaptive strategies prevent cascade amplification.",
+  "faults": [
+    {
+      "targetService": "svc-03",
+      "type": "cascade-crash",
+      "startTimeSec": 20
+    },
+    {
+      "targetService": "svc-01",
+      "type": "cascade-crash",
+      "startTimeSec": 35
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "adaptive-surge",
+  "description": "Naprzemienne bursts + degradacja — profil nieznany parametrom static",
+  "faults": [
+    { "targetService": "svc-01", "type": "baseline-flaky", "startTimeSec": 10, "endTimeSec": 25 },
+    { "targetService": "svc-01", "type": "slow-degradation", "startTimeSec": 25, "endTimeSec": 30 },
+    { "targetService": "svc-01", "type": "burst-failure", "startTimeSec": 30, "endTimeSec": 50 },
+    { "targetService": "svc-03", "type": "slow-degradation", "startTimeSec": 15, "endTimeSec": 55 }
+  ]
+}

@@ -1,0 +1,12 @@
+# Dev/test image (rust-dev): toolchain + docker CLI + network tools. ADR-0004: no host toolchains.
+FROM rust:1.97.1-bookworm
+
+COPY --from=docker:27.3.1-cli /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=docker/compose-bin:v2.29.7 /docker-compose /usr/libexec/docker/cli-plugins/docker-compose
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      iproute2 iptables curl procps python3 && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV CARGO_TARGET_DIR=/app/target
+WORKDIR /app

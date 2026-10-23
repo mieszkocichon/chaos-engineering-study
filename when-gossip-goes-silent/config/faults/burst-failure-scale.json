@@ -1,0 +1,18 @@
+{
+  "name": "burst-failure-scale",
+  "description": "80% packet loss on 2 mid-tier services (svc-b, svc-d) from t=15s to t=40s, then recovery. Variant of 'burst-failure' for the scale-N topologies (gateway -> svc-a..d -> leaves svc-1..); the ring profile targets svc-01.. which scale-N does not have.",
+  "faults": [
+    {
+      "targetService": "svc-b",
+      "type": "burst-failure",
+      "startTimeSec": 15,
+      "endTimeSec": 40
+    },
+    {
+      "targetService": "svc-d",
+      "type": "burst-failure",
+      "startTimeSec": 15,
+      "endTimeSec": 40
+    }
+  ]
+}

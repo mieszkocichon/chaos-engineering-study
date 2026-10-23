@@ -1,0 +1,6 @@
+# Cluster tester: python3 + docker CLI; the script is baked in (no bind mounts, so it also
+# works when compose itself runs inside rust-dev against the host daemon).
+FROM python:3.12-slim-bookworm
+COPY --from=docker:27.3.1-cli /usr/local/bin/docker /usr/local/bin/docker
+COPY tests/compose/cluster_test.py /cluster_test.py
+CMD ["python3", "-u", "/cluster_test.py"]

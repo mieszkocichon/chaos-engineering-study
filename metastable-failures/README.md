@@ -11,28 +11,32 @@ contributions and prior art, and [`docs/adr/`](docs/adr/) for the decision log.
 ## Layout
 
 ```
-src/        sim.js (retry-storm DES), ews.js (CSD signals),
-            run-m1.js, run-m2.js, sweep-hysteresis.js
+../crates/metastable/   Rust implementation: sim.rs (retry-storm DES), ews.rs (CSD signals),
+                        bins run-m1, run-m2, sweep-hysteresis (ADR-0024, ADR-0025)
 scripts/    gate-a.sh, find-loop.sh, explore-cliff.sh
 results/    dated evidence (m1-gate-a.md, m2-gate-b.md)
 notes/      overview, contributions, prior-art, reusable-assets
 docs/adr/   architecture decision records
 ```
 
-Pure Node, no dependencies (standard library only) — no `npm install` needed (thank god).
+The original Node implementation (`src/*.js`) is archived in
+`../old-implementation/metastable-failures/src/` (ADR-0026); the Rust port prints byte-identical output.
 
 ## Run (Docker only)
 
-No host toolchain required. Everything runs inside `node:20-bookworm` so it just works everywhere.
+No host toolchain required. From the repo root (needs the `rust-dev` image, see
+`specs/001-rust-rewrite/quickstart.md`):
 
 ```sh
-# from the metastable-failures/ directory
-docker run --rm -v "$PWD":/app -w /app node:20-bookworm sh scripts/gate-a.sh
-docker run --rm -v "$PWD":/app -w /app node:20-bookworm node src/run-m2.js
-docker run --rm -v "$PWD":/app -w /app node:20-bookworm node src/sweep-hysteresis.js
+sh scripts/dev.sh cargo build --release -p metastable
+sh scripts/dev.sh sh -c 'cd metastable-failures && sh scripts/gate-a.sh'
+sh scripts/dev.sh cargo run -q --release -p metastable --bin run-m2
+sh scripts/dev.sh cargo run -q --release -p metastable --bin sweep-hysteresis -- --attempts 3
 ```
 
-PowerShell: replace `"$PWD"` with `"${PWD}"` (windows stuff...).
+`scripts/gate-a.sh` and `explore-cliff.sh` run `../target/release/run-m1` (override with `M1=...`),
+`find-loop.sh` runs `../target/release/sweep-hysteresis` (`SWEEP=...`). The archived JS:
+`M1="node ../old-implementation/metastable-failures/src/run-m1.js"` (inside `node:20-bookworm`).
 
 ## The two gates
 

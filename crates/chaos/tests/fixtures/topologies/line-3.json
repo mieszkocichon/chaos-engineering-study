@@ -1,0 +1,14 @@
+{
+  "name": "line-3",
+  "description": "Test fixture: gateway calls two leaves; leaves gossip with each other and the gateway.",
+  "services": [
+    { "id": "gateway", "role": "entry" },
+    { "id": "svc-01", "role": "service" },
+    { "id": "svc-02", "role": "service", "processingDelay": 5 }
+  ],
+  "edges": [
+    { "from": "gateway", "to": "svc-01" },
+    { "from": "gateway", "to": "svc-02" },
+    { "from": "svc-01", "to": "svc-02", "kind": "gossip" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "slow-degradation-scale",
+  "description": "Linear latency increase 0->5000ms over 60s on svc-a and svc-c (tc netem, updated every 1s). Variant of 'slow-degradation' for the scale-N topologies (gateway -> svc-a..d -> leaves svc-1..); the ring profile targets svc-01.. which scale-N does not have.",
+  "faults": [
+    {
+      "targetService": "svc-a",
+      "type": "slow-degradation",
+      "startTimeSec": 5,
+      "endTimeSec": 75
+    },
+    {
+      "targetService": "svc-c",
+      "type": "slow-degradation",
+      "startTimeSec": 5,
+      "endTimeSec": 75
+    }
+  ]
+}

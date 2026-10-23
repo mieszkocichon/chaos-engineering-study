@@ -1,0 +1,24 @@
+{
+  "name": "test-action",
+  "description": "Integration test for mid-run action stop-service and spofTest metadata",
+  "topology": "ring-5",
+  "strategies": ["mas-agent"],
+  "faultBases": ["no-wan"],
+  "faultProfiles": ["baseline-flaky"],
+  "seeds": [1000],
+  "resultsDir": "./results-test-chaos-run-action",
+  "projectPrefix": "cta",
+  "workload": {
+    "rps": 10,
+    "durationSec": 5,
+    "warmupSec": 2
+  },
+  "actions": [
+    {
+      "kind": "stop-service",
+      "target": "svc-03",
+      "atSec": 2
+    }
+  ],
+  "workers": 1
+}

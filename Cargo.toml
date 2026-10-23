@@ -1,0 +1,25 @@
+[workspace]
+resolver = "3"
+members = ["crates/metastable", "crates/chaos", "crates/demos"]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+publish = false
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+axum = "0.8"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+ryu = "1"
+libc = "0.2"
+rand = "0.8"
+
+[profile.release]
+debug = false
+
+# The DES and its golden tests are CPU-heavy; keep debug test runs fast.
+[profile.dev.package.metastable]
+opt-level = 3
